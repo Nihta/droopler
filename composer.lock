@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c48413552ed7f50c9d87c0fce68046a5",
+    "content-hash": "3a865945b6d580474afb305e4e1a8244",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1065,6 +1065,54 @@
             "time": "2022-02-19T04:09:55+00:00"
         },
         {
+            "name": "cweagans/composer-patches",
+            "version": "1.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cweagans/composer-patches.git",
+                "reference": "e9969cfc0796e6dea9b4e52f77f18e1065212871"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e9969cfc0796e6dea9b4e52f77f18e1065212871",
+                "reference": "e9969cfc0796e6dea9b4e52f77f18e1065212871",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0 || ~2.0",
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "cweagans\\Composer\\Patches"
+            },
+            "autoload": {
+                "psr-4": {
+                    "cweagans\\Composer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cameron Eagans",
+                    "email": "me@cweagans.net"
+                }
+            ],
+            "description": "Provides a way to patch Composer packages.",
+            "support": {
+                "issues": "https://github.com/cweagans/composer-patches/issues",
+                "source": "https://github.com/cweagans/composer-patches/tree/1.7.2"
+            },
+            "time": "2022-01-25T19:21:20+00:00"
+        },
+        {
             "name": "dflydev/dot-access-configuration",
             "version": "v1.0.3",
             "source": {
@@ -1545,22 +1593,23 @@
         },
         {
             "name": "droptica/droopler",
-            "version": "8.3.0.0",
+            "version": "8.3.1.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/droptica/droopler.git",
-                "reference": "f01f636dd263ba9d8d0751ffd047ec05f86fd6d6"
+                "reference": "694603b58a92ad4175d1bcae87bbd040a810ef08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/droptica/droopler/zipball/f01f636dd263ba9d8d0751ffd047ec05f86fd6d6",
-                "reference": "f01f636dd263ba9d8d0751ffd047ec05f86fd6d6",
+                "url": "https://api.github.com/repos/droptica/droopler/zipball/694603b58a92ad4175d1bcae87bbd040a810ef08",
+                "reference": "694603b58a92ad4175d1bcae87bbd040a810ef08",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/colorbox": "^1.6",
                 "bower-asset/lazysizes": "^5.2",
                 "bower-asset/masonry": "^4.2",
+                "cweagans/composer-patches": "^1.6",
                 "drupal/admin_toolbar": "^3.0",
                 "drupal/advagg": "^4.0",
                 "drupal/better_exposed_filters": "^5.0",
@@ -1571,11 +1620,11 @@
                 "drupal/core": "^8.8 || ^9.0",
                 "drupal/entity_reference_display": "^1.2",
                 "drupal/entity_reference_revisions": "^1.3",
-                "drupal/facets": "^1.0",
+                "drupal/facets": "^2.0",
                 "drupal/features": "^3.5",
                 "drupal/field_group": "^3.0",
                 "drupal/geysir": "^1.3",
-                "drupal/google_analytics": "^3.0",
+                "drupal/google_analytics": "^4.0",
                 "drupal/google_tag": "^1.4",
                 "drupal/lazy": "^3.4",
                 "drupal/link_attributes": "^1.1",
@@ -1587,7 +1636,7 @@
                 "drupal/redirect": "^1.0-beta1",
                 "drupal/schema_metatag": "^2.0",
                 "drupal/search_api": "^1.8",
-                "drupal/simple_sitemap": "^3.3",
+                "drupal/simple_sitemap": "^4.1",
                 "drupal/smtp": "^1.0@beta",
                 "drupal/svg_image": "^1.8",
                 "drupal/tvi": "^1.0-rc2",
@@ -1612,6 +1661,14 @@
                 "bower-asset/outlayer": "*"
             },
             "type": "drupal-profile",
+            "extra": {
+                "patches": {
+                    "drupal/we_megamenu": {
+                        "PHP 8.1 Deprecations": "https://www.drupal.org/files/issues/2022-02-24/we_megamenu_deprecated.patch",
+                        "PHP 8.1 Compatibility": "web/profiles/contrib/droopler/patches/we_megamenu_compatibility_php81.patch"
+                    }
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
@@ -1622,9 +1679,9 @@
             "description": "Droopler installation profile for Drupal 8/9.",
             "support": {
                 "issues": "https://github.com/droptica/droopler/issues",
-                "source": "https://github.com/droptica/droopler/tree/8.3.0.0"
+                "source": "https://github.com/droptica/droopler/tree/8.3.1.0-rc1"
             },
-            "time": "2021-07-06T05:04:23+00:00"
+            "time": "2022-07-01T09:42:35+00:00"
         },
         {
             "name": "drupal/admin_toolbar",
@@ -2975,39 +3032,42 @@
         },
         {
             "name": "drupal/facets",
-            "version": "1.8.0",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facets.git",
-                "reference": "8.x-1.8"
+                "reference": "2.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/facets-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "f621b84b59c5315db14a0529df5dfc74ca5bc9de"
+                "url": "https://ftp.drupal.org/files/projects/facets-2.0.4.zip",
+                "reference": "2.0.4",
+                "shasum": "7735fa8d4422fa320a36a122a35adee5b5192f34"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^9.3 || ^10.0"
             },
             "conflict": {
                 "drupal/search_api": "<1.14"
             },
             "require-dev": {
-                "drupal/search_api": "~1.14"
+                "drupal/jquery_ui_slider": "~1.1",
+                "drupal/jquery_ui_touch_punch": "~1.0",
+                "drupal/search_api": "^1.24||1.x-dev"
+            },
+            "suggest": {
+                "drupal/jquery_ui_slider": "Required for the 'Facets Range Widget' module to work",
+                "drupal/jquery_ui_touch_punch": "Required for the 'Facets Range Widget' module to work"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1620838256",
+                    "version": "2.0.4",
+                    "datestamp": "1657367469",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
-                },
-                "branch-alias": {
-                    "dev-8.x-1.x": "1.x-dev"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3273,20 +3333,20 @@
         },
         {
             "name": "drupal/google_analytics",
-            "version": "3.1.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/google_analytics.git",
-                "reference": "8.x-3.1"
+                "reference": "4.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/google_analytics-8.x-3.1.zip",
-                "reference": "8.x-3.1",
-                "shasum": "171dcac5a67cde66201754baaa52711f45e47a3b"
+                "url": "https://ftp.drupal.org/files/projects/google_analytics-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "4f761d4c852d11966f7289b0eb6431cc8db27240"
             },
             "require": {
-                "drupal/core": "^8.8.6|^9.0"
+                "drupal/core": "^8.9|^9.0"
             },
             "require-dev": {
                 "drupal/token": "^1.7"
@@ -3294,15 +3354,15 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.1",
-                    "datestamp": "1591298584",
+                    "version": "4.0.0",
+                    "datestamp": "1634230238",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "branch-alias": {
-                    "dev-8.x-2.x": "2.x-dev"
+                    "dev-4.x": "4.x-dev"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -3338,7 +3398,7 @@
             "description": "Allows your site to be tracked by Google Analytics by adding a Javascript tracking code to every page.",
             "homepage": "https://www.drupal.org/project/google_analytics",
             "support": {
-                "source": "https://git.drupal.org/project/google_analytics.git",
+                "source": "https://git.drupalcode.org/project/google_analytics",
                 "issues": "https://www.drupal.org/project/issues/google_analytics"
             }
         },
@@ -4251,27 +4311,27 @@
         },
         {
             "name": "drupal/simple_sitemap",
-            "version": "3.11.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_sitemap.git",
-                "reference": "8.x-3.11"
+                "reference": "4.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-8.x-3.11.zip",
-                "reference": "8.x-3.11",
-                "shasum": "5fdd4ed5af5e37e3c707e401d094a179f52e7711"
+                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-4.1.2.zip",
+                "reference": "4.1.2",
+                "shasum": "0b695684d0a6dd2a6162051aac7dab4852d72214"
             },
             "require": {
-                "drupal/core": "^8 || ^9",
+                "drupal/core": "^9.3 || ^10",
                 "ext-xmlwriter": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.11",
-                    "datestamp": "1634344305",
+                    "version": "4.1.2",
+                    "datestamp": "1655334556",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4303,8 +4363,7 @@
             "homepage": "https://drupal.org/project/simple_sitemap",
             "support": {
                 "source": "https://cgit.drupalcode.org/simple_sitemap",
-                "issues": "https://drupal.org/project/issues/simple_sitemap",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
+                "issues": "https://drupal.org/project/issues/simple_sitemap"
             }
         },
         {
