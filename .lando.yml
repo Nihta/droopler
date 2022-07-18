@@ -1,0 +1,18 @@
+name: droopler
+recipe: drupal9
+config:
+  php: '7.4'
+  # via: nginx
+  webroot: web
+  database: mysql:8.0
+  drush: true
+  xdebug: true
+  config:
+    php: config/php.ini
+
+services:
+  appserver:
+    build:
+      - composer install
+
+
